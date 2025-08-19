@@ -1,0 +1,9 @@
+shelves:
+  - id: S1
+    sku: COKE
+    item_weight_g: 500
+    price: 40
+  - id: S2
+    sku: CHIPS
+    item_weight_g: 100
+    price: 25
