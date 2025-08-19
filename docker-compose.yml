@@ -1,0 +1,27 @@
+version: "3.9"
+services:
+  api:
+    build: ./services
+    command: uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - ./services:/app/services
+      - ./edge:/app/edge
+      - ./sim:/app/sim
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_USER: cashier
+      POSTGRES_PASSWORD: cashier
+      POSTGRES_DB: cashierless
+    ports:
+      - "5432:5432"
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+
+volumes:
+  dbdata:
